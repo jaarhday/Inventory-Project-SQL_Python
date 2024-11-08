@@ -191,7 +191,7 @@ root = tk.Tk()
 root.title("Inventory Management")
 
 # Set the window size
-root.geometry("1000x600") 
+root.geometry("800x850") 
 
 # Create a frame for the left side 
 frame_inventory = tk.Frame(root, width=500)
