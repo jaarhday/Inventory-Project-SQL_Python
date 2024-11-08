@@ -184,8 +184,7 @@ def lookup_product(product_name):
     # Close the connection to the database
     conn.close()
 
-import tkinter as tk
-from tkinter import messagebox
+#####################################################################################################################
 
 # GUI setup
 root = tk.Tk()
