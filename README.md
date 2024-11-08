@@ -15,12 +15,19 @@ This project is a simple GUI-based inventory management and order system built u
 
 ## Usage
 **Add a Product**: Enter the product name, quantity, and price, then click "Add Product" to add it to the inventory.
+
 **View Inventory**: Click "View Inventory" to see all products in the system.
+
 **Adjust Quantity**: Enter the product name and the new quantity, then click "Adjust Quantity" to update the product's quantity.
+
 **Lookup Product**: Enter the name of a product and click "Lookup Product" to see its details.
+
 **Make Order**: Choose a product from the dropdown menu, enter the quantity you wish to order, and click "Make Order" to place the order.
+
 **View Orders**: Click "View All Orders" to see the list of orders.
+
 **Clear Order History**: Click "Clear Order History" to delete the order history text file.
+
 **Clear Database**: Click "Clear Database" to delete all product data from the database.
 
 [Click here for a video tutorial of the code in action](www.google.com)
