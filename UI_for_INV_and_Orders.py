@@ -184,61 +184,72 @@ def lookup_product(product_name):
     # Close the connection to the database
     conn.close()
 
+import tkinter as tk
+from tkinter import messagebox
+
 # GUI setup
 root = tk.Tk()
 root.title("Inventory Management")
 
 # Set the window size
-root.geometry("800x600")  # Adjust window size as needed
+root.geometry("1000x600") 
+
+# Create a frame for the left side 
+frame_inventory = tk.Frame(root, width=500)
+frame_inventory.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
 # Fields for adding a product
-tk.Label(root, text="Product Name:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
-entry_name = tk.Entry(root)
+tk.Label(frame_inventory, text="Product Name:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+entry_name = tk.Entry(frame_inventory)
 entry_name.grid(row=0, column=1, padx=10, pady=10)
 
-tk.Label(root, text="Quantity:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
-entry_quantity = tk.Entry(root)
+tk.Label(frame_inventory, text="Quantity:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+entry_quantity = tk.Entry(frame_inventory)
 entry_quantity.grid(row=1, column=1, padx=10, pady=10)
 
-tk.Label(root, text="Price:").grid(row=2, column=0, padx=10, pady=10, sticky="w")
-entry_price = tk.Entry(root)
+tk.Label(frame_inventory, text="Price:").grid(row=2, column=0, padx=10, pady=10, sticky="w")
+entry_price = tk.Entry(frame_inventory)
 entry_price.grid(row=2, column=1, padx=10, pady=10)
 
 # Button to add a product
-tk.Button(root, text="Add Product", command=lambda: add_product(entry_name.get(), int(entry_quantity.get()), float(entry_price.get()))).grid(row=3, column=1, padx=10, pady=10)
+tk.Button(frame_inventory, text="Add Product", command=lambda: add_product(entry_name.get(), int(entry_quantity.get()), float(entry_price.get()))).grid(row=3, column=1, padx=10, pady=10)
 
 # Button to view inventory
-tk.Button(root, text="View Inventory", command=view_inventory).grid(row=4, column=1, padx=10, pady=10)
+tk.Button(frame_inventory, text="View Inventory", command=view_inventory).grid(row=4, column=1, padx=10, pady=10)
 
 # Button to clear the database
-tk.Button(root, text="Clear Database", command=clear_database).grid(row=5, column=1, padx=10, pady=10)
+tk.Button(frame_inventory, text="Clear Database", command=clear_database).grid(row=5, column=1, padx=10, pady=10)
 
 # GUI setup for adjusting quantity
-tk.Label(root, text="Product Name (Adjust Qty):").grid(row=6, column=0, padx=10, pady=10, sticky="w")
-entry_adjust_name = tk.Entry(root)
+tk.Label(frame_inventory, text="Product Name (Adjust Qty):").grid(row=6, column=0, padx=10, pady=10, sticky="w")
+entry_adjust_name = tk.Entry(frame_inventory)
 entry_adjust_name.grid(row=6, column=1, padx=10, pady=10)
 
-tk.Label(root, text="New Quantity:").grid(row=7, column=0, padx=10, pady=10, sticky="w")
-entry_adjust_quantity = tk.Entry(root)
+tk.Label(frame_inventory, text="New Quantity:").grid(row=7, column=0, padx=10, pady=10, sticky="w")
+entry_adjust_quantity = tk.Entry(frame_inventory)
 entry_adjust_quantity.grid(row=7, column=1, padx=10, pady=10)
 
 # Button to adjust quantity
-tk.Button(root, text="Adjust Quantity", command=lambda: adjust_quantity(entry_adjust_name.get(), int(entry_adjust_quantity.get()))).grid(row=8, column=1, padx=10, pady=10)
+tk.Button(frame_inventory, text="Adjust Quantity", command=lambda: adjust_quantity(entry_adjust_name.get(), int(entry_adjust_quantity.get()))).grid(row=8, column=1, padx=10, pady=10)
 
 # GUI setup for product lookup
-tk.Label(root, text="Product Name (Lookup):").grid(row=9, column=0, padx=10, pady=10, sticky="w")
-entry_lookup_name = tk.Entry(root)
+tk.Label(frame_inventory, text="Product Name (Lookup):").grid(row=9, column=0, padx=10, pady=10, sticky="w")
+entry_lookup_name = tk.Entry(frame_inventory)
 entry_lookup_name.grid(row=9, column=1, padx=10, pady=10)
 
 # Button to lookup product
-tk.Button(root, text="Lookup Product", command=lambda: lookup_product(entry_lookup_name.get())).grid(row=10, column=1, padx=10, pady=10)
+tk.Button(frame_inventory, text="Lookup Product", command=lambda: lookup_product(entry_lookup_name.get())).grid(row=10, column=1, padx=10, pady=10)
 
 # Text box to display inventory
-inventory_list = tk.Text(root, height=20, width=60)
+inventory_list = tk.Text(frame_inventory, height=20, width=40)
 inventory_list.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
 
+# Create a frame for the right side
+frame_order = tk.Frame(root, width=500)
+frame_order.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+
 # Section for making an order
-tk.Label(root, text="Select Product to Order:").grid(row=11, column=0, padx=10, pady=10, sticky="w")
+tk.Label(frame_order, text="Select Product to Order:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
 # Fetch products for the dropdown
 conn = connect_db()
@@ -248,23 +259,23 @@ product_names = [row[0] for row in cursor.fetchall()]
 conn.close()
 
 product_var = tk.StringVar(root)
-product_var.set(product_names[0])  # Default value
+product_var.set(product_names[0])
 
-product_menu = tk.OptionMenu(root, product_var, *product_names)
-product_menu.grid(row=11, column=1, padx=10, pady=10)
+product_menu = tk.OptionMenu(frame_order, product_var, *product_names)
+product_menu.grid(row=0, column=1, padx=10, pady=10)
 
-tk.Label(root, text="Quantity to Order:").grid(row=12, column=0, padx=10, pady=10, sticky="w")
-entry_order_quantity = tk.Entry(root)
-entry_order_quantity.grid(row=12, column=1, padx=10, pady=10)
+tk.Label(frame_order, text="Quantity to Order:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+entry_order_quantity = tk.Entry(frame_order)
+entry_order_quantity.grid(row=1, column=1, padx=10, pady=10)
 
 # Button to make an order
-tk.Button(root, text="Make Order", command=make_order).grid(row=13, column=1, padx=10, pady=10)
+tk.Button(frame_order, text="Make Order", command=make_order).grid(row=2, column=1, padx=10, pady=10)
 
 # Button to view all orders
-tk.Button(root, text="View All Orders", command=print_order_list).grid(row=14, column=1, padx=10, pady=10)
+tk.Button(frame_order, text="View All Orders", command=print_order_list).grid(row=3, column=1, padx=10, pady=10)
 
 # Button to clear order history
-tk.Button(root, text="Clear Order History", command=clear_order_history).grid(row=15, column=1, padx=10, pady=10)
+tk.Button(frame_order, text="Clear Order History", command=clear_order_history).grid(row=4, column=1, padx=10, pady=10)
 
 # Start the GUI
 root.mainloop()
