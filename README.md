@@ -30,7 +30,7 @@ This project is a simple GUI-based inventory management and order system built u
 
 **Clear Database**: Click "Clear Database" to delete all product data from the database.
 
-[Click here for a video tutorial of the code in action](www.google.com)
+[Click here for a video tutorial of the code in action](https://www.loom.com/share/004b83404f0c42ef9ea25c8fe51bfa38?sid=ef003a8c-6c31-46b9-9f19-5364297a782d)
 
 ## License
 This project is open-source and available under the MIT License.
