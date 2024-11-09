@@ -1,18 +1,18 @@
-Order Date: 2024-11-08 16:06:31
-Product: Breadlovers White
-Quantity: 12
-Price per Item: $2.28
-Total Price: $27.36
-----------------------------------------
-Order Date: 2024-11-08 16:34:58
+Order Date: 2024-11-08 17:07:20
 Product: Chocolate Chip Cookie
-Quantity: 12
+Quantity: 10
 Price per Item: $2.42
-Total Price: $29.04
+Total Price: $24.20
 ----------------------------------------
-Order Date: 2024-11-08 16:35:04
-Product: Lemon Donuts
-Quantity: 12
-Price per Item: $2.19
-Total Price: $26.28
+Order Date: 2024-11-08 17:07:23
+Product: Sugar Cookie
+Quantity: 10
+Price per Item: $2.42
+Total Price: $24.20
+----------------------------------------
+Order Date: 2024-11-08 17:07:32
+Product: Breadlovers White
+Quantity: 200
+Price per Item: $1.71
+Total Price: $342.00
 ----------------------------------------
